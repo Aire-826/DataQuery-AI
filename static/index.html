@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataQuery AI | Chat with your data</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">D</div>
+                <div>
+                    <h2>DataQuery AI</h2>
+                    <p>Explore your data</p>
+                </div>
+            </div>
+
+            <p class="nav-label">WORKSPACE</p>
+            <div class="nav-item active">▦ &nbsp; Data overview</div>
+            <div class="nav-item">◉ &nbsp; AI assistant</div>
+
+            <div class="sidebar-bottom">
+                <div class="status-dot"></div>
+                <span>Analytics workspace</span>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">DATA WORKSPACE</p>
+                    <h1>Chat with your data</h1>
+                    <p class="subtitle">
+                        Turn your CSV files into meaningful insights.
+                    </p>
+                </div>
+                <div class="avatar">DQ</div>
+            </header>
+
+            <section class="upload-card">
+                <div class="section-heading">
+                    <div>
+                        <h2>Upload your dataset</h2>
+                        <p>Start by importing a CSV file.</p>
+                    </div>
+                    <span class="file-badge">CSV FILE</span>
+                </div>
+
+                <label class="dropzone" for="csvFile">
+                    <div class="upload-icon">↑</div>
+                    <h3 id="fileLabel">Choose a CSV file to get started</h3>
+                    <p>Click here to browse your computer</p>
+                    <span class="browse-button">Choose file</span>
+                </label>
+                <input id="csvFile" type="file" accept=".csv,text/csv" hidden>
+                <p id="uploadStatus" class="status-message" role="status">
+                    Your file is processed by the local backend.
+                </p>
+            </section>
+
+            <section class="metrics">
+                <article class="metric-card">
+                    <p>Total rows</p>
+                    <h2 id="rowCount">—</h2>
+                    <span>Records in dataset</span>
+                </article>
+                <article class="metric-card">
+                    <p>Total columns</p>
+                    <h2 id="columnCount">—</h2>
+                    <span>Available fields</span>
+                </article>
+                <article class="metric-card">
+                    <p>Numeric fields</p>
+                    <h2 id="numericCount">—</h2>
+                    <span>Fields for calculations</span>
+                </article>
+            </section>
+
+            <section class="data-card">
+                <div class="section-heading">
+                    <div>
+                        <h2>Data preview</h2>
+                        <p id="previewDescription">
+                            Upload a file to see its contents.
+                        </p>
+                    </div>
+                    <span class="file-badge">FIRST 10 ROWS</span>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead id="tableHead">
+                            <tr><th>Your columns will appear here</th></tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td class="empty-state">
+                                    No dataset uploaded yet.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            
+<section class="chat-card">
+    <div class="chat-heading">
+        <div class="bot-icon">✦</div>
+        <div>
+            <h2>AI data assistant</h2>
+            <p id="chatSubtitle">Upload a CSV to start asking questions</p>
+        </div>
+        <span class="file-badge">DATA ASSISTANT</span>
+    </div>
+
+    <div id="chatMessages" aria-live="polite">
+        <div class="chat-message">
+            <div class="bot-icon small">✦</div>
+            <p>
+                Hello! Upload a dataset, then ask me about totals,
+                averages, highest values or category comparisons.
+            </p>
+        </div>
+    </div>
+
+    <div class="suggestions">
+        <button type="button" class="suggestion">
+            Summarize the dataset
+        </button>
+        <button type="button" class="suggestion">
+            What is the total sales?
+        </button>
+        <button type="button" class="suggestion">
+            Which product has the highest sales?
+        </button>
+    </div>
+
+    <form id="chatForm" class="chat-input">
+        <input
+            id="question"
+            type="text"
+            placeholder="Ask a question about your CSV..."
+            maxlength="500"
+            required
+        >
+        <button id="sendButton" type="submit">Send ↑</button>
+    </form>
+
+    <p class="chat-note">
+        Answers are calculated from your uploaded dataset.
+    </p>
+</section>
+<script src="/static/script.js" defer></script>
+</body>
+</html>
